@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
@@ -9,13 +10,12 @@ import static com.codeborne.selenide.Selenide.*;
 public class HM4test {
     @Test
     void checkSoftAssertionsWiki() {
+        Configuration.startMaximized = true;
         open("https://github.com/selenide/selenide");
         $(byText("Wiki")).click();
         $(byClassName("wiki-rightbar")).$(byText("SoftAssertions")).should(exist);
-    }
-    @Test
-    void checkJUnit5Example() {
-        open("https://github.com/selenide/selenide/wiki/SoftAssertions");
+        $(byClassName("wiki-rightbar")).$("button").click();
+        $(byClassName("wiki-rightbar")).$(byText("SoftAssertions")).click();
         $("#wiki-content").shouldHave(text("@ExtendWith({SoftAssertsExtension.class})"));
     }
     @Test
