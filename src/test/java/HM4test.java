@@ -11,9 +11,9 @@ public class HM4test {
     void checkSoftAssertionsWiki() {
         open("https://github.com/selenide/selenide");
         $(byText("Wiki")).click();
-        $(byClassName("wiki-rightbar")).$(byText("SoftAssertions")).should(exist);
-        $(byClassName("wiki-rightbar")).$("button").click();
-        $(byClassName("wiki-rightbar")).$(byText("SoftAssertions")).click();
+        $((".wiki-rightbar")).$(byText("SoftAssertions")).should(exist);
+        $((".wiki-rightbar")).$("button").click();
+        $((".wiki-rightbar")).$(byText("SoftAssertions")).click();
         $("#wiki-content").shouldHave(text("@ExtendWith({SoftAssertsExtension.class})"));
     }
     @Test
